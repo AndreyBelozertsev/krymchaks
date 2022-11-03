@@ -41,10 +41,16 @@ class Handler extends ExceptionHandler
      *
      * @return void
      */
-    public function register()
+    public function register():void
     {
         $this->reportable(function (Throwable $e) {
-            //
+            if(app()->isProduction()){
+                logger()->channel('telegram')->debug(
+                    $e->getMessage() . 
+                    "\nФайл - " . $e->getFile() .
+                    "\nСтрока - " . $e->getLine()
+                );
+            }
         });
     }
 }

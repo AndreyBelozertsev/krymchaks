@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Http\Kernel;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +16,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        if ($this->app->isLocal()) {
+            $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+        }
     }
 
     /**
@@ -23,6 +28,28 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Model::shouldBeStrict( !app()->isProduction() );
+       
+
+        if(app()->isProduction()){
+            
+            DB::listen(function ($query){
+                if($query->time > 100){
+                    logger()
+                    ->channel('telegram')
+                    ->debug('query longer than 1ms'.$query->sql,$query->bindings);
+                }
+            });
+       
+            app(Kernel::class)->whenRequestLifecycleIsLongerThan(
+                CarbonInterval::seconds(4),
+                function(){
+                    logger()
+                        ->channel('telegram')
+                        ->debug('whenRequestLifecycleIsLongerThan'.request()->url());
+                }
+            );
+
+        }
     }
 }
