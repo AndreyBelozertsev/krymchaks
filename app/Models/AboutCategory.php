@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class AboutType extends Model
+class AboutCategory extends Model
 {
     use HasFactory, Sluggable, ScopeActive, ScopeIsFixed;
 
-    public function articles()
+    public function abouts()
     {
         return $this->hasMany(About::class);
     }

@@ -29,6 +29,10 @@ class SettingSeeder extends Seeder
                 'value' => 'c 10 до 17'
             ],
             [
+                'key' => 'email',
+                'value' => 'test@test.test'
+            ],
+            [
                 'key' => 'vk',
                 'value' => 'https://vk.com/'
             ],

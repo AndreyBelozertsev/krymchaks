@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\AboutType;
+use App\Models\AboutCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,13 +17,13 @@ class AboutFactory extends Factory
      */
     public function definition()
     {
-        $type = AboutType::all()->random(1)->first();
+        $type = AboutCategory::all()->random(1)->first();
       
         return [
             'title' => fake()->word(),
             'thumbnail' => fake()->imageUrl(640, 480),
             'description' => fake()->paragraph(),
-            'about_type_id' => $type->id,
+            'about_category_id' => $type->id,
             'content' => fake()->paragraph(),
         ];
     }

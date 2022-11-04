@@ -3,20 +3,20 @@
 
 @section('content')
     @php
-        dump($mainPost);
+        print_r($mainPost);
     @endphp
     ---
     @forelse ($posts as $post)
         @php
-            dump($post);
+            print_r($post);
         @endphp
     @empty
         
     @endforelse
     ---
-    @forelse ($types as $type)
+    @forelse ($categories as $category)
         @php
-            dump($type);
+            print_r($category);
         @endphp
     @empty
 
@@ -24,17 +24,10 @@
     ----
     @forelse ($places as $place)
         @php
-            dump($place);
+            print_r($place);
         @endphp
     @empty
 
     @endforelse
-    ----
-    @forelse ($places as $place)
-        @php
-            dump($place);
-        @endphp
-    @empty
-        
-    @endforelse
+
 @endsection

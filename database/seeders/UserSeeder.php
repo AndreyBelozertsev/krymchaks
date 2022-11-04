@@ -17,6 +17,6 @@ class UserSeeder extends Seeder
     {
         User::factory()
             ->count(1)
-            ->create();
+            ->create(['email'=> 'info.rakurs@bk.ru']);
     }
 }

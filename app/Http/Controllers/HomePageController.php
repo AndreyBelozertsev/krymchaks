@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Place;
-use App\Models\AboutType;
+use App\Models\AboutCategory;
 use Illuminate\Http\Request;
 
 class HomePageController extends Controller
@@ -16,14 +16,14 @@ class HomePageController extends Controller
 
         $posts = Post::active()->select(['id','title','slug','thumbnail','description','created_at'])->latest()->where('id', '!=', $mainPost ? $mainPost->id : null)->limit(5)->get();
 
-        $types = AboutType::active()->isFixed()->latest()->limit(6)->get();
+        $categories = AboutCategory::active()->isFixed()->latest()->limit(6)->get();
 
         $places = Place::active()->get();
 
         return view('page.home',[
                                     'mainPost'=>$mainPost,
                                     'posts'=>$posts,
-                                    'types'=>$types,
+                                    'categories'=>$categories,
                                     'places'=> $places
                                 ]);
     }

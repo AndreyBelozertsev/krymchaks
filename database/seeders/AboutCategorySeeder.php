@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\AboutType;
+use App\Models\AboutCategory;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class AboutTypeSeeder extends Seeder
+class AboutCategorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -34,7 +34,7 @@ class AboutTypeSeeder extends Seeder
         ];
 
         foreach($types as $type){
-            AboutType::updateOrCreate(
+            AboutCategory::updateOrCreate(
                 $type
             );
         }

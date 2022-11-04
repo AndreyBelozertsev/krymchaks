@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\AboutType;
+use App\Models\AboutCategory;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -22,7 +23,7 @@ return new class extends Migration
             $table->text('images')->nullable();
             $table->text('description')->nullable();
             $table->text('content')->nullable();
-            $table->foreignIdFor(AboutType::class)
+            $table->foreignIdFor(AboutCategory::class)
                     ->nullable()
                     ->constrained()
                     ->onUpdate('cascade')

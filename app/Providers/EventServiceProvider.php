@@ -3,9 +3,11 @@
 namespace App\Providers;
 
 use App\Models\Post;
+use App\Events\SendContactForm;
 use App\Observers\PostObserver;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
+use App\Listeners\SendContactFormListener;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -20,6 +22,9 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        SendContactForm::class => [
+            SendContactFormListener::class
+        ]
     ];
 
     /**
