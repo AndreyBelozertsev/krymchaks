@@ -18,6 +18,7 @@ class AboutCategoryFactory extends Factory
     {
         return [
             'title' => fake()->word(),
+            'description' => fake()->paragraph(),
             'content' => fake()->paragraph(),
         ];
     }

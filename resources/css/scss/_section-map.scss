@@ -1,0 +1,28 @@
+
+.map-wrap{
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+@media (min-width: 768px){
+    .map-wrap{
+      max-width: 768px;
+    }
+}
+@media (min-width: 991px){
+    .map-wrap{
+      max-width: 991px;
+    }
+}
+@media (min-width: 1140px){
+    .map-wrap{
+      max-width: 1140px;
+    }
+}
+@media (min-width: 1550px){
+    .map-wrap{
+      max-width: 1550px;
+    }
+}

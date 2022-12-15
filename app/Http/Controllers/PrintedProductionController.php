@@ -11,11 +11,11 @@ class PrintedProductionController extends Controller
     {
         $products = PrintedProduction::active()->latest()->paginate(24);
 
-        return view('page.archive.printed-production.index', compact('products'));
+        return view('page.printed-production.index', compact('products'));
     }
 
     public function show(PrintedProduction $product)
     {
-        return view('page.archive.printed-production.show', compact('product') );
+        return view('page.printed-production.show', compact('product') );
     }
 }

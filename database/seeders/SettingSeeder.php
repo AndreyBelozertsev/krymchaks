@@ -21,6 +21,10 @@ class SettingSeeder extends Seeder
                 'value' => 'г. Симферополь, ул. Крылова, 55'
             ],
             [
+                'key' => 'organization',
+                'value' => 'ОО "КРЫМСКОЕ ОБЩЕСТВО КРЫМЧАКОВ "КЪРЫМЧАХЛАР"'
+            ],
+            [
                 'key' => 'phone',
                 'value' => '+79781234567'
             ],

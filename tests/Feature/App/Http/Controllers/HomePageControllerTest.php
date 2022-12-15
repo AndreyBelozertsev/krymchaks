@@ -6,6 +6,7 @@ use Tests\TestCase;
 use App\Models\Post;
 use App\Models\Place;
 use App\Models\AboutCategory;
+use Illuminate\Support\Facades\Cache;
 use App\Http\Controllers\HomePageController;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -179,4 +180,32 @@ class HomePageControllerTest extends TestCase
             ->assertViewIs ('page.home'); 
     }
 
+    /**
+    * @test
+    * @return void
+    */
+    public function is_cache_refresh_after_saved(){
+        Post::factory()->create([
+            'is_fixed' => 1
+        ]);
+        $this->get(action([HomePageController::class]))
+            ->assertOk();
+        
+        $this->assertTrue( Cache::has('main_post_home_page'));
+        $this->assertTrue( Cache::has('posts_home_page'));
+        $this->assertTrue( Cache::has('about_categories_home_page'));
+        $this->assertTrue( Cache::has('places'));
+
+        Post::factory()->create();
+        AboutCategory::factory()->create();
+        Place::factory()->create();
+
+        $this->assertTrue(! Cache::has('main_post_home_page'));
+        $this->assertTrue(! Cache::has('posts_home_page'));
+        $this->assertTrue(! Cache::has('about_categories_home_page'));
+        $this->assertTrue(! Cache::has('places'));
+        
+    }
+
 }
+

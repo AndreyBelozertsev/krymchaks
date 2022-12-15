@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Traits\ImagesGeneration;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class PlaceFactory extends Factory
 {
+    use ImagesGeneration;
     /**
      * Define the model's default state.
      *
@@ -18,13 +20,15 @@ class PlaceFactory extends Factory
     {
         return [
             'title' => fake()->word(),
-            'thumbnail' => fake()->imageUrl(640, 480),
+            'thumbnail' => $this->faker->fixturesImage('place','place/' . date('Y/m/d') ),
+            'images' => $this->imagesGeneration('place','place/'),
             'description' => fake()->paragraph(),
             'content' => fake()->paragraph(),
-            'coordinates' => $this->faker->latitude($min = -90, $max = 90) . ',' .$this->faker->longitude($min = -180, $max = 180)
+            'coordinates' => $this->faker->latitude(44, 46) . ',' .$this->faker->longitude(33, 36)
         ];
     }
 }
+
 // $table->id();
 // $table->string('title');
 // $table->string('slug')->unique();

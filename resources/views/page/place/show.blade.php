@@ -1,9 +1,8 @@
 @extends('layouts.app')
-
+@section('title', $place->title)
 @section('content')
-
-    @php
-        print_r($place);
-    @endphp
-
+{{ Breadcrumbs::render('place.show', $place ) }}
+<section class="section-place">
+    <x-content :item=$place />
+</section>
 @endsection

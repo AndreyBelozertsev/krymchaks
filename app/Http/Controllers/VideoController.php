@@ -11,11 +11,11 @@ class VideoController extends Controller
     {
         $videos = Video::active()->latest()->paginate(24);
 
-        return view('page.archive.video.index', compact('videos'));
+        return view('page.media.video.index', compact('videos'));
     }
 
     public function show(Video $video)
     {
-        return view('page.archive.video.show', compact('video') );
+        return view('page.media.video.show', compact('video') );
     }
 }

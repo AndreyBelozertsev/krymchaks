@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Traits\ImagesGeneration;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class PrintedProductionFactory extends Factory
 {
+    use ImagesGeneration;
     /**
      * Define the model's default state.
      *
@@ -18,10 +20,11 @@ class PrintedProductionFactory extends Factory
     {
         return [
             'title' => fake()->word(),
-            'thumbnail' => fake()->imageUrl(640, 480),
+            'thumbnail' => $this->faker->fixturesImage('printed-production','printed-production/' . date('Y/m/d') ),
+            'images' => $this->imagesGeneration('about','about/'),
             'description' => fake()->paragraph(),
             'content' => fake()->paragraph(),
-            'files' => json_encode([$this->faker->fixturesFile('paper', 'files/paper' )])
+            //'files' => json_encode([$this->faker->fixturesFile('paper', 'files/printed-production' )])
         ];
     }
 }

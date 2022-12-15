@@ -1,8 +1,8 @@
 @extends('layouts.app')
+@section('title', $about->title)
 @section('content')
-
-    @php
-        print_r($about);
-    @endphp
-    
+{{ Breadcrumbs::render('about.article.show', $about, $category) }}
+<section class="section-about">
+    <x-content :item=$about />
+</section>
 @endsection

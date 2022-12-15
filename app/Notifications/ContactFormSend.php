@@ -44,9 +44,9 @@ class ContactFormSend extends Notification
     {
         return (new MailMessage)
                     ->subject('На сайте заполнена контактная форма')
-                    ->line('Имя:' . $this->message_data['name'])
-                    ->line('Электронный адрес:' . $this->message_data['email'])
-                    ->line('Текст сообщения:' . $this->message_data['message']);
+                    ->line('Имя: ' . $this->message_data['name'])
+                    ->line('Электронный адрес: ' . $this->message_data['email'])
+                    ->line('Текст сообщения: ' . $this->message_data['message']);
                     
     }
 

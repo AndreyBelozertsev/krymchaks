@@ -2,8 +2,9 @@
 
 namespace App\View\Components;
 
-use App\Models\AboutType;
+use App\Models\Navigation;
 use Illuminate\View\Component;
+use Illuminate\Support\Facades\Cache;
 
 class MainMenu extends Component
 {
@@ -15,7 +16,10 @@ class MainMenu extends Component
      */
     public function render()
     {
-        $aboutTypes = AboutType::active()->get();
-        return view('components.main-menu',['aboutTypes'=> $aboutTypes]);
+        $items = Cache::rememberForever('navigation_menu', function () {
+            return Navigation::active()->where('navigation_id',null)->with('child')->orderBy('sort')->get();
+        });
+        
+        return view('components.main-menu',['items'=> $items]);
     }
 }

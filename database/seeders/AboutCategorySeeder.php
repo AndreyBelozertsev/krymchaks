@@ -15,31 +15,57 @@ class AboutCategorySeeder extends Seeder
      */
     public function run()
     {
-        $types = [
+        $categories = [
             [
-                'title' => 'Тадиции',
+                'title' => 'История',
+                'description' => fake()->paragraph(),
                 'content' => fake()->paragraph(),
-                'is_fixed' => rand(0,1)
+                'is_fixed' => 1
+            ],
+            [
+                'title' => 'Культура',
+                'description' => fake()->paragraph(),
+                'content' => fake()->paragraph(),
+                'is_fixed' => 1
             ],
             [
                 'title' => 'Кухня',
+                'description' => fake()->paragraph(),
                 'content' => fake()->paragraph(),
-                'is_fixed' => rand(0,1)
+                'is_fixed' => 1
             ],
             [
                 'title' => 'Религия',
+                'description' => fake()->paragraph(),
                 'content' => fake()->paragraph(),
-                'is_fixed' => rand(0,1)
+                'is_fixed' => 1
+            ],
+            [
+                'title' => 'Традиции',
+                'description' => fake()->paragraph(),
+                'content' => fake()->paragraph(),
+                'is_fixed' => 1
+            ],
+            [
+                'title' => 'Просветители',
+                'description' => fake()->paragraph(),
+                'content' => fake()->paragraph(),
+                'is_fixed' => 1
+            ],
+            [
+                'title' => 'Общество',
+                'description' => fake()->paragraph(),
+                'content' => fake()->paragraph(),
+                'is_fixed' => 1
             ]
         ];
+       
 
-        foreach($types as $type){
+        foreach($categories as $category){
             AboutCategory::updateOrCreate(
-                $type
+                $category
             );
         }
-
-        
         
     }
 }

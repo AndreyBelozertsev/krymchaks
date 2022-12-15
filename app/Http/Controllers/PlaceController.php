@@ -9,8 +9,7 @@ class PlaceController extends Controller
 {
     public function index()
     {
-        $places = Place::active()->get();
-        return view('page.place.index', compact('places'));
+        return view('page.place.index');
     }
 
     public function show(Place $place)

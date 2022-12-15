@@ -10,7 +10,7 @@ class PostController extends Controller
     
     public function index()
     {
-        $posts = Post::active()->latest()->paginate(24);
+        $posts = Post::active()->select(['title','slug','thumbnail','description','created_at','post_category_id'])->with('category')->latest()->paginate(24);
 
         return view('page.post.index', compact('posts'));
     }

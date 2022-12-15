@@ -11,11 +11,4 @@ class Setting extends Model
     protected $keyType = 'string';
     public $timestamps = false;
 
-    public function insert_meta($key,$value){
-        $meta = new Setting();
-        $meta->key = $key;
-        $meta->value = $value;
-        $meta->save();
-
-    }
 }

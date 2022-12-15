@@ -4,6 +4,7 @@ namespace App\View\Components;
 
 use App\Models\Setting;
 use Illuminate\View\Component;
+use Illuminate\Support\Facades\Cache;
 
 class ContactPage extends Component
 {
@@ -18,7 +19,7 @@ class ContactPage extends Component
 
     public $telegram;
 
-    public $viber;
+    public $work_time;
 
     public $vk;
 
@@ -26,21 +27,26 @@ class ContactPage extends Component
     public function __construct()
     {
         $this->organization = $this->getValue('organization');
+        $this->address = $this->getValue('address');
         $this->email = $this->getValue('email');
         $this->phone = $this->getValue('phone');
         $this->telegram = $this->getValue('telegram');
-        $this->viber = $this->getValue('viber');
+        $this->work_time = $this->getValue('work_time');
         $this->vk = $this->getValue('vk');
         
         
     }
     protected function getValue($field){
-        if($value = Setting::where('key',$field)->select('value')->first()){
+        $value = Cache::rememberForever("setting.contact.$field", function () use($field) {
+            return Setting::where('key',$field)->select('value')->first();
+         });
+        if($value){
             return $value->value;
         }
         return null;
     }
  
+    
 
     /**
      * Get the view / contents that represent the component.

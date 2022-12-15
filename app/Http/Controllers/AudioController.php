@@ -11,11 +11,11 @@ class AudioController extends Controller
     {
         $audios = Audio::active()->latest()->paginate(24);
 
-        return view('page.archive.audio.index', compact('audios'));
+        return view('page.media.audio.index', compact('audios'));
     }
 
     public function show(Audio $audio)
     {
-        return view('page.archive.audio.show', compact('audio') );
+        return view('page.media.audio.show', compact('audio') );
     }
 }

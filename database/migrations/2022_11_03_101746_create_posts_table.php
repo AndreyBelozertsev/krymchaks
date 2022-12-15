@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Models\PostCategory;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -21,6 +22,11 @@ return new class extends Migration
             $table->text('images')->nullable();
             $table->text('description')->nullable();
             $table->text('content')->nullable();
+            $table->foreignIdFor(PostCategory::class)
+                    ->nullable()
+                    ->constrained()
+                    ->onUpdate('cascade')
+                    ->nullOnDelete('cascade');
             $table->boolean('is_fixed')->default(false);
             $table->boolean('status')->default(true);
             $table->timestamps();

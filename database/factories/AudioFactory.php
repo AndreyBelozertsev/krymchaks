@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Traits\ImagesGeneration;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class AudioFactory extends Factory
 {
+    use ImagesGeneration;
     /**
      * Define the model's default state.
      *
@@ -18,10 +20,11 @@ class AudioFactory extends Factory
     {
         return [
             'title' => fake()->word(),
-            'thumbnail' => fake()->imageUrl(640, 480),
+            'thumbnail' => $this->faker->fixturesImage('media/audio','audio/' . date('Y/m/d') ),
             'description' => fake()->paragraph(),
+            'images' => $this->imagesGeneration('about','about/'),
             'content' => fake()->paragraph(),
-            'files' => json_encode([$this->faker->fixturesFile('audio', 'files/audio' )])
+            //'files' => json_encode([$this->faker->fixturesFile('audio', 'audio' )])
         ];
     }
 }

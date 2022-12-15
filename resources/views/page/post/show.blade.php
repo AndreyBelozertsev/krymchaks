@@ -1,9 +1,9 @@
 @extends('layouts.app')
-
+@section('title', $post->title)
 @section('content')
-
-    @php
-        print_r($post);
-    @endphp
+{{ Breadcrumbs::render('post.show', $post) }}
+<section class="section-post">
+    <x-content :item=$post /> 
+</section>
 
 @endsection

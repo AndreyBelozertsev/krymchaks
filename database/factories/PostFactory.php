@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Traits\ImagesGeneration;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class PostFactory extends Factory
 {
+    use ImagesGeneration;
     /**
      * Define the model's default state.
      *
@@ -18,7 +20,8 @@ class PostFactory extends Factory
     {
         return [
             'title' => fake()->word(),
-            'thumbnail' => fake()->imageUrl(640, 480),
+            'thumbnail' => $this->faker->fixturesImage('post','post/' . date('Y/m/d') ),
+            'images' => $this->imagesGeneration('about','about/'),
             'description' => fake()->paragraph(),
             'is_fixed' => rand(0,1),
             'content' => fake()->paragraph(),

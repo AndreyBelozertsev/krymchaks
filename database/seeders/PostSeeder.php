@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Post;
+use App\Models\PostCategory;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -16,7 +17,7 @@ class PostSeeder extends Seeder
     public function run()
     {
         Post::factory()
-            ->count(100)
-            ->create();
+            ->count(50)
+            ->create(['post_category_id'=>PostCategory::inRandomOrder()->first()]);
     }
 }

@@ -18,10 +18,12 @@ return new class extends Migration
             $table->string('title');
             $table->string('url')->nullable();
             $table->string('thumbnail')->nullable();
+            $table->integer('sort')->default(500);
             $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.

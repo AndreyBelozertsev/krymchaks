@@ -22,7 +22,6 @@ class PartnerFactory extends Factory
             'thumbnail' => fake()->imageUrl(640, 480),
             'description' => fake()->paragraph(),
             'content' => fake()->paragraph(),
-            'files' => [$this->faker->fixturesFile('audio', 'files/audio' )]
         ];
     }
 }

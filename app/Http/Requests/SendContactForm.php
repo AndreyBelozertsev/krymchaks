@@ -17,10 +17,10 @@ class SendContactForm extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:3',
-            'email' => 'required|email:dns',
-            'message' => 'required|min:8',
-            'agree' => 'required',
+            'name' => ['required','min:3'],
+            'email' => ['required','email:dns'],
+            'message' => ['required','min:8'],
+            'agree' => ['required'],
         ];
     }
 

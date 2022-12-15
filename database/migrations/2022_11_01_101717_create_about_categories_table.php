@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug')->unique();
+            $table->text('description')->nullable();
             $table->text('content')->nullable();
             $table->boolean('is_fixed')->default(false);
             $table->boolean('status')->default(true);

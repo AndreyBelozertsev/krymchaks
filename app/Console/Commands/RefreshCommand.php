@@ -31,10 +31,9 @@ class RefreshCommand extends Command
         if(app()->isProduction()){
             return Command::FAILURE;
         }
-        Storage::deleteDirectory('app/public/files/audio');
-        Storage::deleteDirectory('app/public/files/video');
-        Storage::deleteDirectory('app/public/files/paper');
-        Storage::deleteDirectory('app/public/images');
+        $this->call('cache:clear');
+        Storage::deleteDirectory('public/files/');
+        Storage::deleteDirectory('public/images/');
         $this->call('migrate:fresh',[
             '--seed' => true
         ]);

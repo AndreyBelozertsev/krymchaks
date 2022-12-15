@@ -30,7 +30,6 @@ class SendContactFormListener
     public function handle(SendContactForm $event)
     {
         $users = User::all();
-     
         Notification::send($users, new ContactFormSend ($event->request->only(['email','name','message'])));
     }
 }

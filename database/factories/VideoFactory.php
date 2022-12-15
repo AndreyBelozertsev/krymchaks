@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Traits\ImagesGeneration;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class VideoFactory extends Factory
 {
+    use ImagesGeneration;
     /**
      * Define the model's default state.
      *
@@ -18,10 +20,11 @@ class VideoFactory extends Factory
     {
         return [
             'title' => fake()->word(),
-            'thumbnail' => fake()->imageUrl(640, 480),
+            'thumbnail' => $this->faker->fixturesImage('media/video','video/' . date('Y/m/d') ),
+            'images' => $this->imagesGeneration('about','about/'),
             'description' => fake()->paragraph(),
             'content' => fake()->paragraph(),
-            'files' => json_encode([$this->faker->fixturesFile('video', 'files/video' )])
+            //'files' => json_encode([$this->faker->fixturesFile('video', 'video' )])
         ];
     }
 }

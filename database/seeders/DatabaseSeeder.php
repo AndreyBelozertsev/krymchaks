@@ -20,10 +20,13 @@ class DatabaseSeeder extends Seeder
             AboutSeeder::class,
             AudioSeeder::class,
             PlaceSeeder::class,
+            PostCategorySeeder::class,
             PostSeeder::class,
             PrintedProductionSeeder::class,
             SettingSeeder::class,
-            VideoSeeder::class
+            VideoSeeder::class,
+            NavigationSeeder::class,
+            MuseumSeeder::class
         ]);
     }
 }

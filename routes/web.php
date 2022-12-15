@@ -6,8 +6,11 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AudioController;
 use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\VideoController;
+use App\Http\Controllers\MuseumController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\HomePageController;
+use App\Http\Controllers\ThumbnailController;
+use App\Http\Controllers\AboutCategoryController;
 use App\Http\Controllers\PrintedProductionController;
 
 /*
@@ -21,35 +24,52 @@ use App\Http\Controllers\PrintedProductionController;
 |
 */
 
-Route::get('/', HomePageController::class);
+Route::get('/', HomePageController::class)->name('home');
 
-Route::get('/about/{category}', [AboutController::class,'index']);
+Route::get('/about/{category}', [AboutCategoryController::class,'show'])->name('about.category.index');
 
-Route::get('/about/{category}/{about}', [AboutController::class,'show']);
+Route::get('/about/{category}/articles', [AboutController::class,'index'])->name('about.article.index');
 
-Route::get('/posts', [PostController::class,'index']);
+Route::get('/about/{category}/articles/{about}', [AboutController::class,'show'])->name('about.article.show');
 
-Route::get('/posts/{post}', [PostController::class,'show']);
+Route::get('/posts', [PostController::class,'index'])->name('posts');
 
-Route::get('/places', [PlaceController::class,'index']);
+Route::get('/posts/{post}', [PostController::class,'show'])->name('post.show');
 
-Route::get('/places/{place}', [PlaceController::class,'show']);
+Route::get('/places', [PlaceController::class,'index'])->name('places');
 
-Route::get('/archive/audios', [AudioController::class,'index']);
+Route::get('/places/{place}', [PlaceController::class,'show'])->name('place.show');
 
-Route::get('/archive/audios/{audio}', [AudioController::class,'show']);
+Route::get('/museum', [MuseumController::class,'index'])->name('museums');
 
-Route::get('/archive/printed-productions', [PrintedProductionController::class,'index']);
+Route::get('/museum/{museum}', [MuseumController::class,'show'])->name('museum.show');
 
-Route::get('/archive/printed-productions/{product}', [PrintedProductionController::class,'show']);
+Route::get('/media/audios', [AudioController::class,'index'])->name('media.audios.index');
 
-Route::get('/archive/videos', [VideoController::class,'index']);
+Route::get('/media/audios/{audio}', [AudioController::class,'show'])->name('media.audios.show');
 
-Route::get('/archive/videos/{video}', [VideoController::class,'show']);
+Route::get('/media/videos', [VideoController::class,'index'])->name('media.videos.index');
 
-Route::get('/contact', [SettingController::class, 'contactIndex']);
+Route::get('/media/videos/{video}', [VideoController::class,'show'])->name('media.videos.show');
+
+Route::get('/printed-productions', [PrintedProductionController::class,'index'])->name('printed-productions.index');
+
+Route::get('/printed-productions/{product}', [PrintedProductionController::class,'show'])->name('printed-productions.show');
+
+Route::get('/contact', [SettingController::class, 'contactIndex'])->name('contact.index');
 
 Route::post('/contact/send-message', [SettingController::class, 'sendForm'])->name('sendContactForm');
+
+Route::get('/policy', [SettingController::class, 'policyIndex'])->name('policy.index');
+
+Route::get('/storage/images/{dir}/{method}/{year}/{month}/{day}/{size}/{file}',ThumbnailController::class)
+            ->where('method','resize|crop|fit')
+            ->where('year','\d{4}$')
+            ->where('month','\d{2}$')
+            ->where('day','\d{2}$')
+            ->where('size','(\d+|null)x(\d+|null)')
+            ->where('file','.+\.(png|jpg|gif|bmp|svg|jpeg)$')
+            ->name('thumbnail');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

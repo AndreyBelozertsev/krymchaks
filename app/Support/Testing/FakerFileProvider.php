@@ -10,16 +10,17 @@ class FakerFileProvider extends Base
     
     public function fixturesFile(string $fixturesDirPath, string $storageDir):string
     {
-        if(!Storage::exists($storageDir)) {
-            Storage::makeDirectory($storageDir); 
+        $storage = Storage::disk('files');
+        if(!$storage->exists($storageDir)) {
+            $storage->makeDirectory($storageDir); 
         }
 
         $file = $this->generator->file(
             base_path("tests/Fixtures/$fixturesDirPath"),
-            Storage::path($storageDir),
+            $storage->path($storageDir),
             false
         );
 
-        return '/storage/' . trim($storageDir, '/') . '/' . $file;
+        return '/storage/files/' . trim($storageDir, '/') . '/' . $file;
     }
 }

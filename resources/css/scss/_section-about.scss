@@ -1,0 +1,13 @@
+
+.section-about {
+  
+  .nav-tabs .nav-link.active {
+      color: $primary-blue;
+      border-bottom: 3px solid $primary-blue;
+  }
+  @media (min-width: 768px){
+    .nav-tabs{
+      border-right: 1px solid $primary-blue;
+    }
+  }
+}
