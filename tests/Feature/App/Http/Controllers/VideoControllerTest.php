@@ -21,7 +21,7 @@ class VideoControllerTest extends TestCase
     {
         $this->get(action([VideoController::class,'index']))
             ->assertOk()
-            ->assertViewIs ('page.archive.video.index'); 
+            ->assertViewIs ('page.media.video.index'); 
     }
 
     /**

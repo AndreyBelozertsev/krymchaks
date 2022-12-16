@@ -17,4 +17,15 @@ class PlaceObserver
    {
        Cache::forget('places');
    }
+
+   /**
+     * Handle the Place "deleted" event.
+     *
+     * @param  \App\Models\Place  $place
+     * @return void
+     */
+    public function deleted(Place  $place)
+    {
+        Cache::forget('places');
+    }
 }

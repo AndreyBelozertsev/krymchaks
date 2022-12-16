@@ -17,4 +17,15 @@ class NavigationObserver
     {
         Cache::forget('navigation_menu');
     }
+
+    /**
+     * Handle the Navigation "deleted" event.
+     *
+     * @param  \App\Models\Navigation  $navigation
+     * @return void
+     */
+    public function deleted(Navigation $navigation)
+    {
+        Cache::forget('navigation_menu');
+    }
 }

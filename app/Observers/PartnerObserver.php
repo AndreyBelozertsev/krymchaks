@@ -8,12 +8,24 @@ use Illuminate\Support\Facades\Cache;
 class PartnerObserver
 {
     /**
-    * Handle the AboutCategory "saved" event.
+    * Handle the Partner "saved" event.
     *
     * @param  \App\Models\Partner  $partner
     * @return void
     */
     public function saved(Partner $partner)
+    {
+        Cache::forget('partners');
+    }
+
+
+    /**
+     * Handle the Partner "deleted" event.
+     *
+     * @param  \App\Models\Partner  $partner
+     * @return void
+     */
+    public function deleted(Partner $partner)
     {
         Cache::forget('partners');
     }

@@ -21,7 +21,7 @@ class PrintedProductionControllerTest extends TestCase
     {
         $this->get(action([PrintedProductionController::class,'index']))
             ->assertOk()
-            ->assertViewIs ('page.archive.printed-production.index'); 
+            ->assertViewIs ('page.printed-production.index'); 
     }
 
     /**

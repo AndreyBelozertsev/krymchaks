@@ -25,4 +25,16 @@ class PostObserver
         Cache::forget('posts_home_page');
     }
 
+    /**
+     * Handle the Post "deleted" event.
+     *
+     * @param  \App\Models\Post $post
+     * @return void
+     */
+    public function deleted(Post $post)
+    {
+        Cache::forget('main_post_home_page');
+        Cache::forget('posts_home_page');
+    }
+
 }

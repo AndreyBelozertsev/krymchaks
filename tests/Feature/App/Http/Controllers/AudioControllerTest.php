@@ -21,7 +21,7 @@ class AudioControllerTest extends TestCase
     {
         $this->get(action([AudioController::class,'index']))
             ->assertOk()
-            ->assertViewIs ('page.archive.audio.index'); 
+            ->assertViewIs ('page.media.audio.index'); 
     }
 
     /**
