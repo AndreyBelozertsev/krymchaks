@@ -75,7 +75,7 @@
                 </div>
                 <div class="mt-2 flex">
                     <input type="checkbox" class="checked:bg-primary-blue hover:checked:bg-primary-blue focus:checked:bg-primary-blue focus:shadow-none focus:checked:outline-none" id="agree" name="agree">
-                    <label for="agree"><p class="ml-2 text-sm leading-5 text-gray-700 font-bold">Согласен с <a class="text-primary" href="{-- route('policy') --}">политикой</a> обработки персональных данных</p></label>
+                    <label for="agree"><p class="ml-2 text-sm leading-5 text-gray-700 font-bold">Согласен с <a class="text-primary" href="{{ route('policy.index') }}">политикой</a> обработки персональных данных</p></label>
                 </div>
                 <span class="text-red-600 text-sm invalid-feedback" id="agree-error"></span>
                 <div class="hidden" id="preloader">

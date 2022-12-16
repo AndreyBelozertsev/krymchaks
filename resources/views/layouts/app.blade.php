@@ -26,23 +26,7 @@
                             <div class="footer__logo pb-12">
                                 <x-application-logo />
                             </div>
-                            <div class="footer__contacts text-gray-400">
-                                <div class="pb-3">
-                                    <span><a class="footer__contacts-email text-xs" href="mailto:info.rakurs@bk.ru">
-                                        <img class="inline pr-3" src="{{ asset('images/services/mail.svg') }}">
-                                        info.rakurs@bk.ru</a></span>
-                                </div>
-                                <div class="pb-3">
-                                    <span class="footer__contacts-address text-xs">
-                                        <img class="inline pr-3" src="{{ asset('images/services/address.svg') }}">
-                                        г. Симферополь, ул. Центральная д. 5 корпус 2</span>
-                                </div>
-                                <div class="pb-3">
-                                    <span><a class="footer__contacts-phone text-xs" href="tel:79781107283">
-                                        <img class="inline pr-3" src="{{ asset('images/services/phone.svg') }}">
-                                        79781107283</a></span>
-                                </div>
-                            </div>
+                            <x-contacts-buttom />
                             <div class="footer__social">
 
                             </div>
